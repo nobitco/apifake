@@ -6,7 +6,8 @@ const chalk = require('chalk')
 const debug = require('debug')('platziverse:api')
 const api = require('./api')
 
-const port = process.env.PORT || 3001
+// const port = process.env.PORT || 3001
+const port = 3001
 const app = express()
 const server = http.createServer(app)
 
