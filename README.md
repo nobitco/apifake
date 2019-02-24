@@ -7,7 +7,7 @@ WEB Services para jobby
 
 GET /api/{universidad}/practicante/{cedula-identidad}
 
-#### GET /api/{universidad}/students
+#### GET /api/students
 
 Respuesta JSON LIST
 
@@ -23,7 +23,7 @@ Respuesta JSON LIST
 * `city` (String) Ciudad 
 * `role` (String) Rol del usuario
 
-#### GET /api/{universidad}/tutors
+#### GET /api/tutors
 
 Respuesta JSON LIST
 
@@ -37,7 +37,7 @@ Respuesta JSON LIST
 * `role` (String) Rol del usuario
 * `students` (lista) Lista de estudiantes
 
-#### GET /api/{universidad}/next-assignments
+#### GET /api/next-assignments
 
 Respuesta JSON LIST
 
@@ -49,7 +49,7 @@ Respuesta JSON LIST
 * `deliveryDate` (String) Fecha de entrega
 * `deliveryDays` (String) Número de días para la entrega
 
-#### GET /api/{universidad}/expired-assignments
+#### GET /api/expired-assignments
 
 Respuesta JSON LIST
 
@@ -61,7 +61,7 @@ Respuesta JSON LIST
 * `expiredDate` (String) Fecha de la entrega
 * `expiredDays` (String) Número de días vencidos
 
-#### GET /api/{universidad}/places
+#### GET /api/places
 
 Respuesta JSON LIST
 
@@ -75,10 +75,18 @@ Respuesta JSON LIST
 * `students` (json list) Practicantes de la empresa
 * `jobs` (json list) lista de vacantes
 
-### POST
-POST /api/{universidad}/practicante
+#### GET /api/users
 
-POST /api/{universidad}/tutor
+Respuesta JSON LIST
+
+* `id` (String) Identificador unico
+* `username` (String) email
+* `password` (String) password
+* `email` (String) email
+* `emailToken` (String) URL foto
+* `emailVerified` (Boolean)
+* `passwordVerified` (Boolean)
+* `updatedAt` (Date) Fecha de actualización
 
 ## Instalación
 
