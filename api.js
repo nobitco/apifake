@@ -9,11 +9,12 @@ const usersFixtures = require('./tests/fixtures/users')
 const assignmentsFixtures = require('./tests/fixtures/assignments')
 const tutorsFixtures = require('./tests/fixtures/tutors')
 const companiesFixtures = require('./tests/fixtures/companies')
+const studentsFixtures = require('./tests/fixtures/students')
 
 api.get('/students', (req, res) => {
   debug('get students')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(novicesFixtures.all))
+  res.json(studentsFixtures.all)
 })
 
 api.get('/tutors', (req, res) => {

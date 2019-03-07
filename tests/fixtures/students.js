@@ -24,10 +24,58 @@ const student = {
   role: 'student'
 }
 
+/* ******** asignación ********* */
+var today = Date.now()
+let deliveryDate
+deliveryDate = new Date(faker.date.future())
+
+var deliveryTime = deliveryDate - today
+var deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
+
+let assignment = {
+  id: 1,
+  activity: 'informe a',
+  deliveryDate: deliveryDate.toDateString(),
+  deliveryDays: deliveryDays
+}
+
+let assignmentrm = {}
+let nextAssignments = []
+
+nextAssignments.push(assignment)
+
+let nTotal = getRandomInt(1, 5)
+
+for (let i = 2; i <= nTotal; i++) {
+  deliveryDate = new Date(faker.date.future())
+  deliveryTime = deliveryDate - today
+  deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
+
+  assignmentrm = {
+    id: i,
+    activity: 'Activity ' + faker.random.word(),
+    deliveryDate: deliveryDate.toDateString(),
+    deliveryDays: deliveryDays
+  }
+  nextAssignments.push(assignmentrm)
+}
+// ordenar
+nextAssignments.sort(function compareNumbers (a, b) {
+  if (a.deliveryDays > b.deliveryDays) {
+    return 1
+  }
+
+  if (a.deliveryDays < b.deliveryDays) {
+    return -1
+  }
+
+  return 0
+})
+
 let students = []
 let studentrm = {}
 
-let nTotal = getRandomInt(15, 80)
+nTotal = getRandomInt(3, 10)
 let idUniversity
 let idEnterprise
 let idStatePractice
@@ -47,7 +95,7 @@ for (let i = 2; i <= nTotal; i++) {
     university: universities[idUniversity],
     place: enterprises[idEnterprise],
     city: faker.address.city(),
-    role: 'student'
+    assigments: nextAssignments
   }
   students.push(studentrm)
 }
