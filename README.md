@@ -21,7 +21,8 @@ Respuesta JSON LIST
 * `university` (String) Identificador unico de la universidad
 * `place` (String) Identificador unico de la empresa donde realiza práctica
 * `city` (String) Ciudad 
-* `assignments` (Array) Array jsons con assigments del estudiante 
+* `assignments` (Array) Array jsons con objectos assigments:{id, activity, deliveryDate, deliveryDays}
+
 
 #### GET /api/tutors
 
