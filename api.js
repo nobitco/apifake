@@ -10,11 +10,16 @@ const assignmentsFixtures = require('./tests/fixtures/assignments')
 const tutorsFixtures = require('./tests/fixtures/tutors')
 const companiesFixtures = require('./tests/fixtures/companies')
 const studentsFixtures = require('./tests/fixtures/students')
+const coordinatorsFixtures = require('./tests/fixtures/coordinators')
 
-api.get('/students', (req, res) => {
+api.get('/students/:username', (req, res) => {
   debug('get students')
-  res.append('Access-Control-Allow-Origin','*')
-  res.json(studentsFixtures.all)
+  if (req.params.username == 'coordinador100') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(studentsFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
 })
 
 api.get('/tutors', (req, res) => {
@@ -45,6 +50,12 @@ api.get('/expired-assignments', (req, res) => {
   debug('GET expired-assignments')
   res.append('Access-Control-Allow-Origin','*')
   res.send(JSON.stringify(assignmentsFixtures.expiredAssignments))
+})
+
+api.get('/coordinators', (req, res) => {
+  debug('GET expired-assignments')
+  res.append('Access-Control-Allow-Origin','*')
+  res.json(coordinatorsFixtures.all)
 })
 
 module.exports = api

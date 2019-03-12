@@ -1,11 +1,11 @@
-# REST API jobby
+# REST API FAKE jobby
 
 WEB Services para jobby
 
 ## Routes
 ### GET
 
-GET /api/{universidad}/practicante/{cedula-identidad}
+GET /api/students/{username-coordinador}
 
 #### GET /api/students
 
@@ -21,7 +21,7 @@ Respuesta JSON LIST
 * `university` (String) Identificador unico de la universidad
 * `place` (String) Identificador unico de la empresa donde realiza práctica
 * `city` (String) Ciudad 
-* `role` (String) Rol del usuario
+* `assignments` (Array) Array jsons con assigments del estudiante 
 
 #### GET /api/tutors
 
@@ -87,6 +87,16 @@ Respuesta JSON LIST
 * `emailVerified` (Boolean)
 * `passwordVerified` (Boolean)
 * `updatedAt` (Date) Fecha de actualización
+
+#### GET /api/coordinators
+
+Respuesta JSON LIST
+
+* `id` (String) Identificador unico
+* `email` (String) email
+* `university` (String) codigo universidad
+* `updatedAt` (Date) Fecha de actualización
+
 
 ## Instalación
 
