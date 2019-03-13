@@ -11,6 +11,7 @@ const tutorsFixtures = require('./tests/fixtures/tutors')
 const companiesFixtures = require('./tests/fixtures/companies')
 const studentsFixtures = require('./tests/fixtures/students')
 const coordinatorsFixtures = require('./tests/fixtures/coordinators')
+const assessmentsFixtures = require('./tests/fixtures/assessments')
 
 api.get('/students/:username', (req, res) => {
   debug('get students')
@@ -58,4 +59,13 @@ api.get('/coordinators', (req, res) => {
   res.json(coordinatorsFixtures.all)
 })
 
+api.get('/assessments/:username', (req, res) => {
+  debug('GET assessments')
+  if (req.params.username == 'coordinador100') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(assessmentsFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
+})
 module.exports = api
