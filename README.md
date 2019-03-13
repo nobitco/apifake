@@ -109,3 +109,14 @@ Respuesta JSON LIST
 * `email` (String) email
 * `university` (String) codigo universidad
 * `updatedAt` (Date) Fecha de actualización
+
+#### GET /api/assessments/{username-coordinator}
+
+Respuesta JSON LIST
+
+* `id` (String) Identificador unico
+* `order` (String) email
+* `required` (Bool) Requisito
+* `startAt` (Integer) Número de días
+* `title` (String) Título descriptivo
+* `description` (String) Descripción de la evaluación
