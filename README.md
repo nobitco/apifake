@@ -2,12 +2,23 @@
 
 WEB Services para jobby
 
+## Instalación en local
+
+1. Clone
+2. Cambiar a la rama embedded
+3. Instalar paquetes
+4. npm run start-dev
+5. Consuma!
+
+Aqui está en producción **https://blooming-brook-90674.herokuapp.com/**
+
+Use los siguientes username:
+username-coordinador: coordinador100
+
 ## Routes
 ### GET
 
-GET /api/students/{username-coordinador}
-
-#### GET /api/students
+#### GET /api/students/{username-coordinador}
 
 Respuesta JSON LIST
 
@@ -97,13 +108,3 @@ Respuesta JSON LIST
 * `email` (String) email
 * `university` (String) codigo universidad
 * `updatedAt` (Date) Fecha de actualización
-
-
-## Instalación
-
-1. Clone
-2. Instalar paquetes
-3. npm run start-dev
-4. Y consuma!
-
-You can see a live demo at **https://powerful-mountain-15092.herokuapp.com/**
