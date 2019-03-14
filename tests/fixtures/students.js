@@ -84,7 +84,7 @@ const student = {
 let students = []
 let studentrm = {}
 
-let nTotal = getRandomInt(3, 10)
+let nTotal = getRandomInt(10, 30)
 let idUniversity
 let idEnterprise
 let idStatePractice

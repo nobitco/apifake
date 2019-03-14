@@ -20,7 +20,7 @@ var assessment = {
 
 let assessments = []
 let assessmentrm = {}
-let nTotal = getRandomInt(1, 5)
+let nTotal = getRandomInt(5, 15)
 
 for (let i = 2; i <= nTotal; i++) {
   let days = getRandomInt(1, 112)
