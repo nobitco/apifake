@@ -15,7 +15,7 @@ const assessmentsFixtures = require('./tests/fixtures/assessments')
 
 api.get('/students/:username', (req, res) => {
   debug('get students')
-  if (req.params.username == 'coordinador100') {
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
     res.append('Access-Control-Allow-Origin','*')
     res.json(studentsFixtures.all)
   } else {
