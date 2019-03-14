@@ -23,10 +23,15 @@ api.get('/students/:username', (req, res) => {
   }
 })
 
-api.get('/tutors', (req, res) => {
+api.get('/tutors/:username', (req, res) => {
   debug('get tutors')
-  res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(tutorsFixtures.all))
+
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(tutorsFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
 })
 
 api.get('/places', (req, res) => {
