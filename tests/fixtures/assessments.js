@@ -13,7 +13,7 @@ var assessment = {
   id: 1,
   order: 1,
   required: (boo == 1) ? true : false,
-  startAt: days,
+  startsAt: days,
   title: faker.lorem.word(),
   description: faker.lorem.words()
 }
@@ -28,7 +28,7 @@ for (let i = 2; i <= nTotal; i++) {
 
   assessmentrm = {
     id: i - 1,
-    order: 1,
+    order: i,
     required: (boo == 1) ? true : false,
     startAt: days,
     title: faker.lorem.word(),

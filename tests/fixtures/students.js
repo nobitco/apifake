@@ -12,7 +12,7 @@ function getRandomInt (min, max) {
 
 
 // Generar assignments
-function getAssignments() {
+function getAssessments() {
 
   /* ******** asignación ********* */
   var today = Date.now()
@@ -65,8 +65,7 @@ function getAssignments() {
   return nextAssignments
 }
 
-let newAssignments = getAssignments()
-
+// student unitario
 const student = {
   id: 1,
   username: faker.internet.userName(),
@@ -76,10 +75,11 @@ const student = {
   avatar: faker.image.avatar(),
   state: statePractice[0],
   university: 'icesi',
-  place: 'ABC',
   city: faker.address.city(),
-  assignments: newAssignments
+  assessments: []
 }
+
+student.fullname = student.firstName + ' ' + student.lastname
 
 let students = []
 let studentrm = {}
@@ -94,8 +94,6 @@ for (let i = 2; i <= nTotal; i++) {
   idEnterprise = getRandomInt(0, 3)
   idStatePractice = getRandomInt(0, 3)
 
-  newAssignments = getAssignments()
-
   studentrm = {
     id: i - 1,
     username: faker.internet.userName(),
@@ -107,8 +105,22 @@ for (let i = 2; i <= nTotal; i++) {
     university: universities[idUniversity],
     place: enterprises[idEnterprise],
     city: faker.address.city(),
-    assignments: newAssignments
   }
+
+  studentrm.fullname = studentrm.name + ' ' + studentrm.lastname
+  
+  switch(idStatePractice) {
+    case 0:
+      studentrm.assessments = []
+      break
+    case 1:
+      studentrm.startDate = new Date()
+      studentrm.assessments = getAssessments()
+
+      break
+  }
+
+
   students.push(studentrm)
 }
 
