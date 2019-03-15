@@ -37,25 +37,25 @@ api.get('/tutors/:username', (req, res) => {
 api.get('/places', (req, res) => {
   debug('get tutors')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(companiesFixtures.all))
+  res.json(companiesFixtures.all)
 })
 
 api.get('/users', (req, res) => {
   debug('GET users')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(usersFixtures.all))
+  res.json(usersFixtures.all)
 })
 
 api.get('/next-assignments', (req, res) => {
   debug('GET next-assignments')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(assignmentsFixtures.nextAssignments))
+  res.json(assignmentsFixtures.nextAssignments)
 })
 
 api.get('/expired-assignments', (req, res) => {
   debug('GET expired-assignments')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(assignmentsFixtures.expiredAssignments))
+  res.json(assignmentsFixtures.expiredAssignments)
 })
 
 api.get('/coordinators', (req, res) => {
