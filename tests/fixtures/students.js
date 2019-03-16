@@ -14,27 +14,19 @@ function getRandomInt (min, max) {
 
 // Generar assignments
 function getAssessments(startDate) {
-
   /* ******** asignación ********* */
   var today = new Date()
   let startsAt = getRandomInt(1, 112)
-
-  // deliveryDate = new Date(faker.date.future())
-
-  // var deliveryTime = deliveryDate - today
-
   var milisecondsDeadline = startDate.getTime() + (startsAt * milisecondsByDay)
-
   let deadline = new Date(milisecondsDeadline)
- 
-
-  // var deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
   let boo = getRandomInt(1, 3)
+
   let assessment = {
     id: 1,
     order: 1,
     required: (boo == 1) ? true : false,
     title: faker.lorem.word(),
+    description: faker.lorem.words(),
     startsAt: startsAt,
     deadline: deadline.toDateString(),
     isExpired: (today > deadline) ? true : false
@@ -46,7 +38,6 @@ function getAssessments(startDate) {
   nextAssessments.push(assessment)
 
   let nTotal = getRandomInt(1, 5)
-
   for (let i = 2; i <= nTotal; i++) {
     let startsAt = getRandomInt(1, 112)
     var milisecondsDeadline = startDate.getTime() + (startsAt * milisecondsByDay)
@@ -58,6 +49,7 @@ function getAssessments(startDate) {
       order: i,
       required: (boo == 1) ? true : false,
       title: faker.lorem.word(),
+      description: faker.lorem.words(),
       startsAt: startsAt,
       deadline: deadline.toDateString(),
       isExpired: (today > deadline) ? true : false
@@ -91,6 +83,7 @@ const student = {
   state: statePractice[0],
   university: 'icesi',
   city: faker.address.city(),
+  academicTutor: faker.internet.userName(),
   assessments: []
 }
 
@@ -134,8 +127,6 @@ for (let i = 2; i <= nTotal; i++) {
 
       break
   }
-
-
   students.push(studentrm)
 }
 
