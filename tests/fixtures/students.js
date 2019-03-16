@@ -4,6 +4,7 @@ const faker = require('faker')
 var statePractice = ['busqueda', 'proceso', 'culminado']
 var universities = ['icesi', 'javeriana', 'usc']
 var enterprises = ['Canon', 'Ecopetrol', 'Nobit']
+const milisecondsByDay = 86400000 
 // Retorna un entero aleatorio entre min (incluido) y max (excluido)
 // ¡Usando Math.round() te dará una distribución no-uniforme!
 function getRandomInt (min, max) {
@@ -12,57 +13,71 @@ function getRandomInt (min, max) {
 
 
 // Generar assignments
-function getAssessments() {
+function getAssessments(startDate) {
 
   /* ******** asignación ********* */
-  var today = Date.now()
-  let deliveryDate
-  deliveryDate = new Date(faker.date.future())
+  var today = new Date()
+  let startsAt = getRandomInt(1, 112)
 
-  var deliveryTime = deliveryDate - today
-  var deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
+  // deliveryDate = new Date(faker.date.future())
 
-  let assignment = {
+  // var deliveryTime = deliveryDate - today
+
+  var milisecondsDeadline = startDate.getTime() + (startsAt * milisecondsByDay)
+
+  let deadline = new Date(milisecondsDeadline)
+ 
+
+  // var deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
+  let boo = getRandomInt(1, 3)
+  let assessment = {
     id: 1,
-    activity: 'informe a',
-    deliveryDate: deliveryDate.toDateString(),
-    deliveryDays: deliveryDays
+    order: 1,
+    required: (boo == 1) ? true : false,
+    title: faker.lorem.word(),
+    startsAt: startsAt,
+    deadline: deadline.toDateString(),
+    isExpired: (today > deadline) ? true : false
   }
 
-  let assignmentrm = {}
-  let nextAssignments = []
+  let assessmentrm = {}
+  let nextAssessments = []
 
-  nextAssignments.push(assignment)
+  nextAssessments.push(assessment)
 
   let nTotal = getRandomInt(1, 5)
 
   for (let i = 2; i <= nTotal; i++) {
-    deliveryDate = new Date(faker.date.future())
-    deliveryTime = deliveryDate - today
-    deliveryDays = Math.trunc(deliveryTime / 86400000) // milisegundos
+    let startsAt = getRandomInt(1, 112)
+    var milisecondsDeadline = startDate.getTime() + (startsAt * milisecondsByDay)
+    let deadline = new Date(milisecondsDeadline)
+    let boo = getRandomInt(1, 3)
 
-    assignmentrm = {
+    assessmentrm = {
       id: i,
-      activity: 'Activity ' + faker.random.word(),
-      deliveryDate: deliveryDate.toDateString(),
-      deliveryDays: deliveryDays
+      order: i,
+      required: (boo == 1) ? true : false,
+      title: faker.lorem.word(),
+      startsAt: startsAt,
+      deadline: deadline.toDateString(),
+      isExpired: (today > deadline) ? true : false
     }
-    nextAssignments.push(assignmentrm)
+    nextAssessments.push(assessmentrm)
   }
   // ordenar
-  nextAssignments.sort(function compareNumbers (a, b) {
-    if (a.deliveryDays > b.deliveryDays) {
+  nextAssessments.sort(function compareNumbers (a, b) {
+    if (a.order > b.order) {
       return 1
     }
 
-    if (a.deliveryDays < b.deliveryDays) {
+    if (a.order < b.order) {
       return -1
     }
 
     return 0
   })
 
-  return nextAssignments
+  return nextAssessments
 }
 
 // student unitario
@@ -115,7 +130,7 @@ for (let i = 2; i <= nTotal; i++) {
       break
     case 1:
       studentrm.startDate = new Date()
-      studentrm.assessments = getAssessments()
+      studentrm.assessments = getAssessments(studentrm.startDate)
 
       break
   }
