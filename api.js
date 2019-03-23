@@ -19,7 +19,7 @@ api.get('/students/:username', (req, res) => {
     res.append('Access-Control-Allow-Origin','*')
     res.json(studentsFixtures.all)
   } else {
-    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+    res.status(404).json({ coderr: 'ERR_COORD_NOT_EXIST' })
   }
 })
 
