@@ -64,7 +64,7 @@ api.get('/coordinators', (req, res) => {
   res.json(coordinatorsFixtures.all)
 })
 
-api.get('/assessments/:username', (req, res) => {
+api.get('/assignments/:username', (req, res) => {
   debug('GET assessments')
   if (req.params.username == 'coordinador100@icesi.edu.co') {
     res.append('Access-Control-Allow-Origin','*')
