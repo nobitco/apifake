@@ -11,11 +11,7 @@
     "faker": "^4.1.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "nodemon": "^1.19.1",
-=======
-    "nodemon": "^1.19.3",
->>>>>>> embedded
     "standard": "^11.0.1"
   },
   "scripts": {
