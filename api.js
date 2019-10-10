@@ -12,6 +12,7 @@ const companiesFixtures = require('./tests/fixtures/companies')
 const studentsFixtures = require('./tests/fixtures/students')
 const coordinatorsFixtures = require('./tests/fixtures/coordinators')
 const assessmentsFixtures = require('./tests/fixtures/assessments')
+const schedulesFixtures = require('./tests/fixtures/schedules')
 
 api.get('/students/:username', (req, res) => {
   debug('get students')
@@ -73,4 +74,15 @@ api.get('/assignments/:username', (req, res) => {
     res.status(404).send('¡Lo siento, no puedo encontrar eso!')
   }
 })
+
+api.get('/schedules/:username', (req, res) => {
+  debug('GET schedule')
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(schedulesFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
+})
+
 module.exports = api
