@@ -110,6 +110,7 @@ Respuesta JSON LIST
 * `university` (String) codigo universidad
 * `updatedAt` (Date) Fecha de actualización
 
+<<<<<<< HEAD
 #### GET /api/assessments/{username-coordinator}
 
 Respuesta JSON LIST
@@ -120,3 +121,6 @@ Respuesta JSON LIST
 * `startAt` (Integer) Número de días
 * `title` (String) Título descriptivo
 * `description` (String) Descripción de la evaluación
+=======
+You can see a live demo at **https://blooming-brook-90674.herokuapp.com/**
+>>>>>>> 1e34d41c1f21fd3b5568baa0058aee6d9123ca24
