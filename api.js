@@ -9,41 +9,68 @@ const usersFixtures = require('./tests/fixtures/users')
 const assignmentsFixtures = require('./tests/fixtures/assignments')
 const tutorsFixtures = require('./tests/fixtures/tutors')
 const companiesFixtures = require('./tests/fixtures/companies')
+const studentsFixtures = require('./tests/fixtures/students')
+const coordinatorsFixtures = require('./tests/fixtures/coordinators')
+const assessmentsFixtures = require('./tests/fixtures/assessments')
 
-api.get('/students', (req, res) => {
+api.get('/students/:username', (req, res) => {
   debug('get students')
-  res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(novicesFixtures.all))
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(studentsFixtures.all)
+  } else {
+    res.status(404).json({ coderr: 'ERR_COORD_NOT_EXIST' })
+  }
 })
 
-api.get('/tutors', (req, res) => {
+api.get('/tutors/:username', (req, res) => {
   debug('get tutors')
-  res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(tutorsFixtures.all))
+
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(tutorsFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
 })
 
 api.get('/places', (req, res) => {
   debug('get tutors')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(companiesFixtures.all))
+  res.json(companiesFixtures.all)
 })
 
 api.get('/users', (req, res) => {
   debug('GET users')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(usersFixtures.all))
+  res.json(usersFixtures.all)
 })
 
 api.get('/next-assignments', (req, res) => {
   debug('GET next-assignments')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(assignmentsFixtures.nextAssignments))
+  res.json(assignmentsFixtures.nextAssignments)
 })
 
 api.get('/expired-assignments', (req, res) => {
   debug('GET expired-assignments')
   res.append('Access-Control-Allow-Origin','*')
-  res.send(JSON.stringify(assignmentsFixtures.expiredAssignments))
+  res.json(assignmentsFixtures.expiredAssignments)
 })
 
+api.get('/coordinators', (req, res) => {
+  debug('GET expired-assignments')
+  res.append('Access-Control-Allow-Origin','*')
+  res.json(coordinatorsFixtures.all)
+})
+
+api.get('/assignments/:username', (req, res) => {
+  debug('GET assessments')
+  if (req.params.username == 'coordinador100@icesi.edu.co') {
+    res.append('Access-Control-Allow-Origin','*')
+    res.json(assessmentsFixtures.all)
+  } else {
+    res.status(404).send('¡Lo siento, no puedo encontrar eso!')
+  }
+})
 module.exports = api
