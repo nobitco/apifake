@@ -110,7 +110,6 @@ Respuesta JSON LIST
 * `university` (String) codigo universidad
 * `updatedAt` (Date) Fecha de actualización
 
-<<<<<<< HEAD
 #### GET /api/assessments/{username-coordinator}
 
 Respuesta JSON LIST
