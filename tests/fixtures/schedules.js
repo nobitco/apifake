@@ -35,10 +35,16 @@ for (let i = 1; i <= nTotal; i++) {
         task = {
             id: j,
             taskTitle: 'Task ' + faker.lorem.word(),
-            taskDate : formatted_date
+            taskDate : formatted_date,
+            unixtimezero: Date.parse(deliveryDate)
         }
         tasks.push(task)
     }
+
+    tasks.sort(function (a,b) {
+        return a.unixtimezero - b.unixtimezero
+    })
+    
     schedule = {
         id: i,
         scheduleTitle: faker.lorem.word(),
