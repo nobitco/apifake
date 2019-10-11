@@ -21,19 +21,28 @@ for (let i = 1; i <= nTotal; i++) {
 
     for (let j = 1; j <= nTotal; j++) {
         let deliveryDate = new Date(faker.date.future())
-        let formatted_date = deliveryDate.getFullYear() + "-" + (deliveryDate.getMonth() + 1) + "-" + deliveryDate.getDate()
+
+        let month = deliveryDate.getMonth() + 1
+        let monthWithZero
+        month < 10 ? monthWithZero = '0' : monthWithZero = ''
+
+        let day = deliveryDate.getDate()
+        let dayWithZero
+        day < 10 ? dayWithZero = '0' : dayWithZero = ''
+
+        let formatted_date = deliveryDate.getFullYear() + "-" + monthWithZero + (deliveryDate.getMonth() + 1) + "-" + dayWithZero + deliveryDate.getDate()
         
         task = {
             id: j,
             taskTitle: 'Task ' + faker.lorem.word(),
-            deliveryDate : formatted_date
+            taskDate : formatted_date
         }
         tasks.push(task)
     }
     schedule = {
         id: i,
         scheduleTitle: faker.lorem.word(),
-        schedule: tasks
+        tasks: tasks
     }
 
     schedules.push(schedule)
