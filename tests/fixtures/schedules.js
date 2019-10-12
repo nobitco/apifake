@@ -47,7 +47,7 @@ for (let i = 1; i <= nTotal; i++) {
     
     schedule = {
         id: i,
-        scheduleTitle: faker.lorem.word(),
+        scheduleTitle: 'School of ' + faker.lorem.word(),
         tasks: tasks
     }
 
